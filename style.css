@@ -1,0 +1,13 @@
+body {
+  margin: 10px;
+  padding: 5px;
+  background-image: url("Halmstad_bibliotek-3.jpg");
+  background-size: cover;
+}
+h1,
+h2 {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(41, 41, 70);
+}
