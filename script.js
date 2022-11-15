@@ -13,3 +13,42 @@ let getData = async (url) => {
   let data = await response.json();
   return data;
 };
+
+// gör en request till url
+
+let weatherApp = async () => {
+  let info = await getData(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
+  );
+
+  // spara kordinater (longitud,latitud) i variabler
+
+  let lon = info[0].lon;
+  let lat = info[0].lat;
+
+  // gör en request för och hämta väderdata
+
+  let getWeather = await getData(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+  );
+
+  console.log(getWeather);
+
+  // omvandla data till variabler
+
+  let weather = getWeather.main.temp;
+  let country = getWeather.sys.country;
+  country = " Sweden";
+  let clouds = getWeather.weather[0].description;
+
+  // acessa och ändra DOMen
+
+  let resultCity = document.getElementById("location");
+  resultCity.innerHTML = city + "," + country;
+  let weatherTemp = document.getElementById("temperature");
+  weatherTemp.innerHTML = weather.toFixed(0) + "°C, " + clouds;
+};
+
+//kalla på väderappsfunktionen
+
+weatherApp();
