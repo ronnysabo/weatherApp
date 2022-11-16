@@ -39,7 +39,7 @@ let weatherApp = async () => {
   let weather = getWeather.main.temp;
   let country = getWeather.sys.country;
   country = " Sweden";
-  let clouds = getWeather.weather[0].description;
+  let clouds = getWeather.weather.description;
 
   // acessa och ändra DOMen
 
