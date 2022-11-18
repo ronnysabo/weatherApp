@@ -39,7 +39,7 @@ let weatherApp = async () => {
   let weather = getWeather.main.temp;
   let country = getWeather.sys.country;
   country = " Sweden";
-  let clouds = getWeather.weather.description;
+  let clouds = getWeather.weather[0].description;
 
   // acessa och ändra DOMen
 
@@ -47,6 +47,11 @@ let weatherApp = async () => {
   resultCity.innerHTML = city + "," + country;
   let weatherTemp = document.getElementById("temperature");
   weatherTemp.innerHTML = weather.toFixed(0) + "°C, " + clouds;
+  if (clouds == true) {
+    weatherTemp.innerHTML = weather.toFixed(0) + "°C, " + clouds;
+  } else {
+    weatherTemp.innerHTML = weather.toFixed(0) + "°C";
+  }
 };
 
 //kalla på väderappsfunktionen
